@@ -1,0 +1,13 @@
+.title {
+    margin: 2rem 0;
+    font-weight: 500;
+}
+
+.ant-row {
+    display: none !important;
+}
+
+.groupInputs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+}

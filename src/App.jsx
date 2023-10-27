@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import authenticateApi from "./authenticate";
 import EhrRecords from "./pages/EhrRecords";
 import axios from "axios";
+import Form from "./modules/form/Form";
 // authorize, token, getrequest
 export const userCredentials = {
   id: 5184,
@@ -40,7 +41,8 @@ function App() {
 
   return (
     <div className="App">
-      <EhrRecords data={ehrRecordsData} />
+      <Form />
+      {/* <EhrRecords data={ehrRecordsData} /> */}
     </div>
   );
 }
