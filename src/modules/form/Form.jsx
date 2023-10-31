@@ -92,20 +92,20 @@ function InputField({
 }) {
   return (
     <div
-      className={styles.selectLabContainer}
+      className={styles.inputFieldContainer}
       style={margin && { margin: "10px 0" }}
     >
       <label>
-        {noLabel ? null : label}
+        {noLabel ? null : <span>{label}</span>}
         {textarea ? (
           <Input.TextArea
-            className={styles.selectLab}
+            className={styles.inputField}
             placeholder={label?.split(":")[0]}
           />
         ) : select ? (
           <Select
             className={
-              templateSelect ? styles.selectTemplate : styles.selectLab
+              templateSelect ? styles.selectTemplate : styles.inputField
             }
             placeholder={label?.split(":")[0]}
             size="middle"
