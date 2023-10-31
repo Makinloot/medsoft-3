@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <Form />
-      {/* <EhrRecords data={ehrRecordsData} /> */}
+      <EhrRecords data={ehrRecordsData} />
     </div>
   );
 }

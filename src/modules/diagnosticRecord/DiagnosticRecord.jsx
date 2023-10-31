@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Card } from "antd";
 import styles from "./DiagnosticRecord.module.css";
 import Crup from "../crup/Crup";

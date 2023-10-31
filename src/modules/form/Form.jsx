@@ -22,14 +22,14 @@ export default function Form() {
         autoComplete="off"
         style={{
           width: "90%",
-          margin: "0 auto",
-          border: "2px solid #ccc",
+          margin: "2rem auto",
+          border: "1px solid #f0f0f0",
           padding: "1rem",
           borderRadius: "4px",
         }}
       >
         <div className={styles.titleContainer}>
-          <h2 className={styles.title}>ჰისტოპათოლოგიური კვლევა</h2>
+          <h2 className={styles.title}>ჰისტოპათოლოგიური გამოკვლევა</h2>
           <div
             style={{
               display: "flex",
@@ -41,7 +41,9 @@ export default function Form() {
           </div>
         </div>
 
-        <InputField select templateSelect label="შაბლონი" noLabel />
+        <div style={{ width: "300px" }}>
+          <InputField select templateSelect label="შაბლონი" noLabel />
+        </div>
         <div className={styles.groupContainer}>
           <div className={styles.groupInputs}>
             <InputField label={"პათოლოგ-ანატომი:"} select />
@@ -91,7 +93,7 @@ function InputField({
   type,
 }) {
   return (
-    <div
+    <AntForm.Item
       className={styles.inputFieldContainer}
       style={margin && { margin: "10px 0" }}
     >
@@ -114,6 +116,6 @@ function InputField({
           <Input placeholder={label?.split(":")[0]} type={type && type} />
         )}
       </label>
-    </div>
+    </AntForm.Item>
   );
 }

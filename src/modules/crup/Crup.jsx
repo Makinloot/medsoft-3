@@ -1,4 +1,3 @@
-import React from "react";
 import { IoAddOutline } from "react-icons/io5";
 import { BiEdit } from "react-icons/bi";
 import { TiDeleteOutline } from "react-icons/ti";

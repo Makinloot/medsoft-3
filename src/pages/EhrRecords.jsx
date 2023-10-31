@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
 import DiagnosticRecord from "../modules/diagnosticRecord/DiagnosticRecord";
 
 export default function EhrRecords({ data }) {
