@@ -1,12 +1,10 @@
 .titleContainer {
   margin: 0 0 2rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .title {
   font-weight: 500;
+  text-align: center;
 }
 
 .ant-row {

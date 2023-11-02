@@ -1,44 +1,39 @@
 /* eslint-disable react/prop-types */
-import { Button, Checkbox, Form as AntForm, Input, Select } from "antd";
+import { Checkbox, Form as AntForm, Input, Select, Modal, Button } from "antd";
 import styles from "./Form.module.css";
-import { AiOutlineClose } from "react-icons/ai";
+import { useAppContext } from "../../context/ContextProvider";
 
 export default function Form() {
+  const { isModalOpen, setIsModalOpen } = useAppContext();
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  const initialValues = {
+    მიკროსკოპია: "DefaultUsername",
+    ["პათოლოგ-ანატომი"]: "testtest",
+  };
+
   return (
-    <div>
+    <Modal
+      title="Basic Modal"
+      open={isModalOpen}
+      onCancel={() => setIsModalOpen(false)}
+      width={"90%"}
+      footer={null}
+    >
       <AntForm
         name="basic"
-        // initialValues={{
-        //   remember: true,
-        // }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
-        style={{
-          width: "90%",
-          margin: "2rem auto",
-          border: "1px solid #f0f0f0",
-          padding: "1rem",
-          borderRadius: "4px",
-        }}
+        initialValues={initialValues}
       >
         <div className={styles.titleContainer}>
           <h2 className={styles.title}>ჰისტოპათოლოგიური გამოკვლევა</h2>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-          >
-            <AiOutlineClose size={20} />
-          </div>
         </div>
 
         <div style={{ width: "300px" }}>
@@ -69,17 +64,21 @@ export default function Form() {
           <InputField label={"მასალის სახე:"} />
           <InputField label={"ორგანო:"} />
         </div>
-        <InputField label={"მიკროსკოპია:"} textarea />
+        <InputField
+          label={"მიკროსკოპია:"}
+          textarea
+          value={initialValues.მიკროსკოპია}
+        />
         <InputField label={"ჰისტოპათოლოგიური დასკვნა:"} textarea margin />
         <InputField label={"შენიშვნა:"} textarea />
         <div className={styles.buttonsContainer}>
           <Button type="primary" htmlType="submit">
             შენახვა
           </Button>
-          <Button>გაუქმება</Button>
+          <Button onClick={() => setIsModalOpen(false)}>გაუქმება</Button>
         </div>
       </AntForm>
-    </div>
+    </Modal>
   );
 }
 
@@ -91,11 +90,13 @@ function InputField({
   templateSelect,
   margin,
   type,
+  value,
 }) {
   return (
     <AntForm.Item
       className={styles.inputFieldContainer}
       style={margin && { margin: "10px 0" }}
+      name={label?.split(":")[0]}
     >
       <label>
         {noLabel ? null : <span>{label}</span>}
@@ -103,6 +104,7 @@ function InputField({
           <Input.TextArea
             className={styles.inputField}
             placeholder={label?.split(":")[0]}
+            defaultValue={value}
           />
         ) : select ? (
           <Select
@@ -111,9 +113,14 @@ function InputField({
             }
             placeholder={label?.split(":")[0]}
             size="middle"
+            defaultValue={value}
           ></Select>
         ) : (
-          <Input placeholder={label?.split(":")[0]} type={type && type} />
+          <Input
+            placeholder={label?.split(":")[0]}
+            type={type && type}
+            defaultValue={value}
+          />
         )}
       </label>
     </AntForm.Item>
